@@ -1,0 +1,35 @@
+const jobList = [
+    { "id": 1, "jobTitle": "Software Engineer", "companyName": "Tech Innovations Inc.", },
+    { "id": 2, "jobTitle": "Data Analyst", "companyName": "Data Insights LLC" },
+    { "id": 3, "jobTitle": "Project Manager", "companyName": "Global Solutions Ltd." },
+    { "id": 4, "jobTitle": "Graphic Designer", "companyName": "Creative Studio" },
+    { "id": 5, "jobTitle": "UX/UI Designer", "companyName": "Design Hub" },
+    { "id": 6, "jobTitle": "Systems Administrator", "companyName": "Network Solutions" },
+    { "id": 7, "jobTitle": "Marketing Specialist", "companyName": "Brand Builders" },
+    { "id": 8, "jobTitle": "Product Owner", "companyName": "Agile Products Corp." },
+    { "id": 9, "jobTitle": "Business Analyst", "companyName": "Insightful Strategies" },
+    { "id": 10, "jobTitle": "Sales Executive", "companyName": "SalesForce Dynamics" },
+    { "id": 11, "jobTitle": "HR Coordinator", "companyName": "Talent Solutions" },
+    { "id": 12, "jobTitle": "Front-end Developer", "companyName": "Web Creations" },
+    { "id": 13, "jobTitle": "Back-end Developer", "companyName": "Server Side Inc." },
+    { "id": 14, "jobTitle": "DevOps Engineer", "companyName": "Cloud Infrastructure Co." },
+    { "id": 15, "jobTitle": "Data Scientist", "companyName": "Analytics Pro" },
+    { "id": 16, "jobTitle": "Content Writer", "companyName": "Wordsmiths Publishing" },
+    { "id": 17, "jobTitle": "SEO Specialist", "companyName": "Search Optimizers" },
+    { "id": 18, "jobTitle": "Network Engineer", "companyName": "ConnectTech" },
+    { "id": 19, "jobTitle": "Technical Support Engineer", "companyName": "Support Services" },
+    { "id": 20, "jobTitle": "Business Development Manager", "companyName": "Growth Partners" },
+    { "id": 21, "jobTitle": "Quality Assurance Engineer", "companyName": "TestRight Technologies" },
+    { "id": 22, "jobTitle": "Database Administrator", "companyName": "Data Security Corp." },
+    { "id": 23, "jobTitle": "Web Developer", "companyName": "Web Solutions" },
+    { "id": 24, "jobTitle": "Social Media Manager", "companyName": "Digital Marketing Agency" },
+    { "id": 25, "jobTitle": "Research Scientist", "companyName": "Innovative Research Co." },
+    { "id": 26, "jobTitle": "Sales Manager", "companyName": "Sales Success Group" },
+    { "id": 27, "jobTitle": "Cloud Solutions Architect", "companyName": "CloudTech Solutions" },
+    { "id": 28, "jobTitle": "Application Support Analyst", "companyName": "App Support Services" },
+    { "id": 29, "jobTitle": "Financial Analyst", "companyName": "Finance Experts Inc." },
+    { "id": 30, "jobTitle": "Copywriter", "companyName": "Creative Writes" }
+  ];
+  
+  export default jobList;
+  

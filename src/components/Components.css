@@ -1,0 +1,197 @@
+ /*********************buttons css**************************/
+ .login-btn {
+   background-color: #4CAF50;
+   color: #fff;
+   padding: 8px 20px;
+   border: none;
+   font-family: "regular";
+   font-size: 17px;
+   width: 100%;
+   border-radius: 8px;
+ }
+
+ .icon-only {
+   background: none;
+   border: none;
+   font-size: 25px;
+ }
+
+ .icon-btn {
+   color: var(--hover-text-color);
+   width: 100px;
+   font-size: 25px;
+   background: var(--hover-text-color)33 !important;
+   border: 1px solid var(--hover-text-color) !important;
+   font-family: 'regular' !important;
+   border-radius: 1px !important;
+   width: 50px;
+   margin: 5px 0;
+ }
+
+ .crud-btn {
+   background-color: #4CAF50;
+   color: #fff;
+   padding: 8px 16px;
+   border: none;
+   font-family: "regular";
+   font-size: 16px;
+   border-radius: 10px;
+ }
+ .delete {
+   color: red;
+ }
+
+ .btn-primary {
+   background-color: transparent !important;
+   color: #251414 !important;
+   border: none !important;
+ }
+
+ .dropdown-toggle::after {
+   content: none !important;
+ }
+
+ .dropdown-menu a {
+   background-color: #ffffff;
+   color: #191c1f;
+ }
+ .dropdown-menu a:hover {
+   background-color: var(--hover-text-color)33 !important;
+   color: var(--hover-text-color) !important;
+ }
+ .close-btn{
+  background-color: #4CAF50;
+  color: #fff;
+
+ }
+ /*********************buttons css*********************************/
+
+ /*************************** form css start **********************/
+ textarea:focus,
+ select:focus,
+ Form.Control {
+   outline: none !important;
+ }
+
+ .form-control,
+ .css-13cymwt-control {
+   background: aliceblue !important;
+   border: 1px solid #cecece !important;
+   font-family: 'regular' !important;
+ }
+.text-editor{background: aliceblue !important; height: 200px;}
+ .form-control:focus,
+ .p-inputtext:focus {
+   box-shadow: none !important;
+ }
+
+ .input-container {
+   position: relative;
+ }
+
+ .prefix-icon {
+   position: absolute;
+   top: 4px;
+   left: 10px;
+ }
+
+ .suffix-icon svg {
+   position: absolute;
+   right: 15px;
+   top: 12px;
+ }
+
+ .form-control-padboth {
+   padding: 0.375rem 2.2rem !important;
+ }
+
+ .form-control-padleft {
+   padding: 0.375rem 0 0.375rem 2.2rem !important;
+ }
+
+ .form-control-padright {
+   padding: 0.375rem 2.2rem 0.375rem 1rem !important;
+ }
+
+ /*************************** form css end **********************/
+
+
+ /************************** table css start *******************/
+
+ .card {
+   border: 1px solid #e9e9e9;
+   border-radius: 12px !important;
+ }
+
+ .table {
+   --bs-table-bg: transparent !important;
+ }
+
+ .table-end tr td:last-child,
+ .table-end th:last-child {
+   text-align: end;
+ }
+
+ .table-center tr td:last-child,
+ .table-center th:last-child {
+   text-align: center;
+ }
+
+ table tr {
+   vertical-align: middle;
+ }
+
+ /************************** Dialog start *************************************/
+ .confirm-dialog-overlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.5);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   z-index: 1000;
+  
+ }
+
+ .confirm-dialog {
+   background: white;
+   border-radius: 5px;
+   padding: 20px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+   text-align: center;
+   border-radius: 18px;
+ }
+
+ .confirm-dialog button {
+   margin: 5px;
+   padding: 10px 20px;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+ }
+
+ .confirm-dialog button:hover {
+   background-color: #ff2424;
+ }
+
+ /************************** Dialog start *************************************/
+ /************************** filter start *************************************/
+ .filter-bar{
+  position: fixed;
+  background-color: #ffffff;
+  width: 350px;
+  right: -100%;
+  top: 65px;
+  display: grid;
+  grid-template-rows:1fr 6.4fr;
+  gap: 20px; /* Adjust the value to set the desired gap */
+  padding: 10px;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: -3px 0 5px rgba(0, 0, 0, 0.1);
+  transition: right 0.5s ease-in-out;
+ }
+ .filter-bar.open{right: 0;}

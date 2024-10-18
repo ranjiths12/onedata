@@ -1,0 +1,7 @@
+body{
+   background-color:  #f3f2f7 !important;
+}
+:root {
+    --hover-bg-color: #26507333; 
+    --hover-text-color: #265073;  
+  }
