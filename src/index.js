@@ -10,8 +10,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   < >
     <Provider store={store}>
-      <ToastContainer />
-      <App />
+   
+        <ToastContainer />
+        <App />
+     
     </Provider>
   </>
 

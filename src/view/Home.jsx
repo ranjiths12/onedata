@@ -4,8 +4,6 @@ import PageTitle from "../components/PageTitle";
 import { ActionButton, Buttons } from '../components/Buttons';
 import { TextInputForm } from '../components/Forms';
 import { HiMagnifyingGlass } from "react-icons/hi2";
-import JobSearchFilter from './filters/JobSearchFilter';
-import CustomCanvas from '../components/OffCanvas';
 import TableUI from '../components/TableUI';
 import { MdOutlineDelete } from "react-icons/md";
 import { LiaEditSolid } from "react-icons/lia";
@@ -15,11 +13,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import NotifyData from '../components/NotifyData';
 import { addJob, updateJob, deleteJob, setInitialJobs } from '../slices/jobSlices';
 import jobs from '../data/Jobs';
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const jobList = useSelector((state) => state.job.jobList);
   const [show, setShow] = useState(false);
   const [editingJob, setEditingJob] = useState(null);
@@ -34,8 +30,8 @@ const Home = () => {
 
   // Pagination State
   const [currentPage, setCurrentPage] = useState(1);
-  const jobsPerPage = 6;
-
+  const jobsPerPage = 6; // Number of jobs to display per page
+  
   // Search Query State
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -43,35 +39,44 @@ const Home = () => {
   useEffect(() => {
     dispatch(setInitialJobs(jobs));
   }, [dispatch]);
-
-  const toggleFilter = () => {
-    setIsFilterOpen(prevState => !prevState);
-  };
-
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
 
+  const validateInputs = () => {
+    const missingFields = [];
+    if (!formData.companyName) missingFields.push('Company Name');
+    if (!formData.jobTitle) missingFields.push('Job Title');
+    if (!formData.experienceRequired) missingFields.push('Experience Required');
+    if (!formData.jobDescription) missingFields.push('Job Description');
+    if (missingFields.length > 0) {
+      const errorMessage = `Please fill in the following required fields: ${missingFields.join(', ')}`;
+      NotifyData(errorMessage, "error");
+      return false;
+    }
+    return true;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+    if (!validateInputs()) return;
+
     const newJob = {
-      id: editingJob ? editingJob.id : Date.now(), // Use the existing ID for updates
+      id: editingJob ? editingJob.id : Date.now(),
       companyName: formData.companyName,
       jobTitle: formData.jobTitle,
       experienceRequired: formData.experienceRequired,
       skills: formData.skills,
       jobDescription: formData.jobDescription,
     };
-  
+
     if (formData.logo) {
-      // Create a URL for the uploaded logo file
       const logoUrl = URL.createObjectURL(formData.logo);
-      newJob.logo = logoUrl; // Store the logo URL in the job data
+      newJob.logo = logoUrl;
     } else if (editingJob) {
-      newJob.logo = editingJob.logo; // Keep the existing logo if no new logo is uploaded
+      newJob.logo = editingJob.logo;
     }
-  
+
     if (editingJob) {
       // Update job in the store
       dispatch(updateJob(newJob));
@@ -81,7 +86,7 @@ const Home = () => {
       dispatch(addJob(newJob));
       NotifyData("New Job Added", "success");
     }
-  
+
     // Reset pagination to the first page after adding/updating job
     setCurrentPage(1);
     handleClose();
@@ -101,7 +106,7 @@ const Home = () => {
 
   const handleClose = () => {
     setShow(false);
-    setEditingJob(null); // Clear editing job
+    setEditingJob(null);
     setFormData({
       companyName: '',
       jobTitle: '',
@@ -119,14 +124,15 @@ const Home = () => {
       jobTitle: job.jobTitle,
       experienceRequired: job.experienceRequired,
       skills: job.skills,
-      logo: null, 
-      jobDescription: job.jobDescription 
+      logo: null,
+      jobDescription: job.jobDescription
     });
     setShow(true);
   };
+
   const handleDlt = (jobId) => {
-    dispatch(deleteJob(jobId)); 
-    NotifyData("Job Deleted", "success"); 
+    dispatch(deleteJob(jobId));
+    NotifyData("Job Deleted", "success");
   };
 
   const actionoptions = (job) => [
@@ -135,33 +141,42 @@ const Home = () => {
   ];
 
   const jobHead = ["No", "Job Title", "Company Name"];
-
   
-  const indexOfLastJob = currentPage * jobsPerPage; 
-  const indexOfFirstJob = indexOfLastJob - jobsPerPage; 
-
-  
+  // Filter jobs based on search query
   const filteredJobs = jobList.filter(job =>
     job.jobTitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
     job.companyName.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-  const currentJobs = filteredJobs.slice(indexOfFirstJob, indexOfLastJob); 
+  ).sort((a, b) => b.id - a.id);
+  
+  // Get current jobs based on pagination
+  const totalJobs = filteredJobs.length; // Total jobs after filtering
+  const indexOfLastJob = currentPage * jobsPerPage;
+  const indexOfFirstJob = indexOfLastJob - jobsPerPage;
+  const currentJobs = filteredJobs.slice(indexOfFirstJob, indexOfLastJob);
 
+  // Prepare job data for the table
   const jobData = currentJobs.map((job, index) => ({
     values: [
-      indexOfFirstJob + index + 1, 
+      indexOfFirstJob + index + 1,
       job.jobTitle,
       job.companyName,
-      // job.logo ? <img src={job.logo} alt="Logo" style={{ width: '50px', height: '50px' }} /> : "No Logo", 
       <ActionButton actionoptions={actionoptions(job)} />,
     ],
   }));
 
   // Calculate total pages
-  const totalPages = Math.ceil(filteredJobs.length / jobsPerPage);
+  const totalPages = Math.ceil(totalJobs / jobsPerPage); 
 
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
   };
 
   return (
@@ -173,14 +188,14 @@ const Home = () => {
               <PageTitle PageTitle="Job Listing" showButton={false} />
             </Col>
             <Col lg="6" md="6" xs={12} className='text-end py-3'>
-              <Buttons OnClick={handleOpen} label="Invite User" classname="crud-btn" />
+              <Buttons OnClick={handleOpen} label="Create New" classname="crud-btn" />
               <CustomModal
                 show={show}
                 setShow={setShow}
-                pageTitle={editingJob ? "Edit Job" : "Invite Job"}
+                pageTitle={editingJob ? "Edit Job" : "Create Job"}
                 showButton={true}
                 submitButton={true}
-                label="Submit"
+                label={editingJob ? "Update" : "Submit"}
                 CancelLabel="Cancel"
                 BodyComponent={<JobCreations formData={formData} setFormData={setFormData} />}
                 OnClick={handleSubmit}
@@ -194,41 +209,33 @@ const Home = () => {
                 classname="form-control-padleft"
                 prefix_icon={<HiMagnifyingGlass />}
                 PlaceHolder="Search"
-                value={searchQuery} // Bind search input value
-                onChange={handleSearchChange} // Handle change in search input
+                value={searchQuery}
+                onChange={handleSearchChange}
               />
-            </Col>
-            <Col lg="9" className='text-end align-self-center'>
-              <Buttons label="Filter" classname="crud-btn" OnClick={toggleFilter} />
             </Col>
             <Col xs='12'>
               <TableUI headers={jobHead} body={jobData} showActionColumn={true} />
             </Col>
-            <Col xs='12' className="py-3">
-              <div className="pagination">
-                <Buttons
-                  disabled={currentPage === 1} // Disable if on the first page
-                  OnClick={() => handlePageChange(currentPage - 1)}
-                  label={<><FiChevronLeft /></>}
-                  classname="crud-btn mx-2"
-                />
-                <Buttons
-                  disabled={currentPage === totalPages || totalPages === 0} // Disable if on the last page
-                  OnClick={() => handlePageChange(currentPage + 1)}
-                  label={<><FiChevronRight /></>}
-                  classname="crud-btn mx-2"
-                />
-              </div>
+            {/* Pagination Controls */}
+            <Col xs={12} className='py-4 d-flex justify-content-between'>
+              <Buttons 
+                label="Previous" 
+                classname="crud-btn" 
+                OnClick={handlePreviousPage} 
+                disabled={currentPage === 1} // Disable button if on first page
+              />
+              <span>{`Page ${currentPage} of ${totalPages}`}</span>
+              <Buttons 
+                label="Next" 
+                classname="crud-btn" 
+                OnClick={handleNextPage} 
+                disabled={currentPage === totalPages} // Disable button if on last page
+              />
             </Col>
           </Row>
         </Container>
       </div>
-      <CustomCanvas
-        Canvastitle="Filter"
-        filterbody={<JobSearchFilter />}
-        isOpen={isFilterOpen}
-        Closebtn={toggleFilter}
-      />
+    
     </div>
   );
 };

@@ -14,7 +14,7 @@
 body {
   font-family: 'regular';
 }
-
+.bold{font-family: 'bold';}
 li {
   list-style: none !important;
 }

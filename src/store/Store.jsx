@@ -1,10 +1,14 @@
 // src/store/index.js
 import { configureStore } from '@reduxjs/toolkit';
-import jobReducer from '../slices/jobSlices'; // Ensure you import the job slice
+import jobReducer from '../slices/jobSlices';
+import applicationReducer from '../slices/ApplicationSlices';
+
 
 const store = configureStore({
     reducer: {
-        job: jobReducer, // Make sure the reducer is named correctly
+        job: jobReducer, 
+        application: applicationReducer,
+        
     },
 });
 

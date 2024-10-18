@@ -8,7 +8,6 @@ import { NavLink } from 'react-router-dom';
 const Header = () => {
   const [showProfileOptions, setShowProfileOptions] = useState(false);
   const profileDropdownRef = useRef(null);
-
   const handleSideBar = () => {
     document.body.classList.toggle('toggle-sidebar');
   };
@@ -30,7 +29,6 @@ const Header = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
-
   return (
     <>
       <Navbar expand="sm" className="pos-fixed bg-white">

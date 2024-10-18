@@ -6,9 +6,14 @@ const MenuItems = [
     text: "Job Portal",
   },
   {
-    path: "/application",
+    path: "/joblisting",
     icon: <HiOutlineNewspaper />,
-    text: "Application",
+    text: "Job Listing",
+  },
+  {
+    path: "/applicationlisting",
+    icon: <HiOutlineNewspaper />,
+    text: "Application Listing",
   },
 ];
 

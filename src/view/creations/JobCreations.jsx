@@ -44,10 +44,12 @@ const JobCreations = ({ formData, setFormData }) => {
   };
 
   const handleEditorChange = (content) => {
+    const strippedText = content.replace(/<[^>]*>/g, '');
     setFormData({
       ...formData,
-      jobDescription: content,
+      jobDescription: strippedText,
     });
+    
   };
 
   return (
@@ -55,17 +57,17 @@ const JobCreations = ({ formData, setFormData }) => {
       <Container fluid>
         <Row>
           <Col lg='4' className='py-3'>
-            <TextInputForm 
-              textlabel="Company Name" 
-              PlaceHolder="Company Name" 
+            <TextInputForm
+              textlabel="Company Name"
+              PlaceHolder="Company Name"
               name="companyName"
               value={formData.companyName}
               onChange={handleInputChange}
             />
           </Col>
           <Col lg='4' className='py-3'>
-            <TextInputForm 
-              textlabel="Job Title" 
+            <TextInputForm
+              textlabel="Job Title"
               PlaceHolder="Job Title"
               name="jobTitle"
               value={formData.jobTitle}
@@ -73,8 +75,8 @@ const JobCreations = ({ formData, setFormData }) => {
             />
           </Col>
           <Col lg='4' className='py-3'>
-            <TextInputForm 
-              textlabel="Experience Required" 
+            <TextInputForm
+              textlabel="Experience Required"
               PlaceHolder="Experience Required"
               name="experienceRequired"
               value={formData.experienceRequired}
@@ -83,17 +85,17 @@ const JobCreations = ({ formData, setFormData }) => {
             />
           </Col>
           <Col lg="8" className='py-3'>
-            <DropDown 
-              textlabel="Skills" 
-              placeholder="Select skills" 
-              value={selectedSkills} 
-              onChange={handleSkillChange} 
+            <DropDown
+              textlabel="Skills"
+              placeholder="Select skills"
+              value={selectedSkills}
+              onChange={handleSkillChange}
               options={skills.map(skill => ({ value: skill.id, label: skill.name }))}
             />
           </Col>
           <Col lg="4" className='py-3'>
-            <TextInputForm 
-              type="file" 
+            <TextInputForm
+              type="file"
               textlabel="Choose a logo"
               name="logo"
               onChange={handleFileChange} // This will handle the new logo file
@@ -106,7 +108,7 @@ const JobCreations = ({ formData, setFormData }) => {
             )}
           </Col>
           <Col lg="12" className='py-3'>
-            <TextEditor 
+            <TextEditor
               textlabel="Job Description"
               onChange={handleEditorChange}
               value={formData.jobDescription}

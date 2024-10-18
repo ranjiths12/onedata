@@ -4,6 +4,7 @@ import 'react-quill/dist/quill.snow.css';
 import './components/Components.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import './view/Page.css';
 import routes from './routes/Routes';
 import Login from "./view/Login";
 import Layout from "./routes/LayOut";
