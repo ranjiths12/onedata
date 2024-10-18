@@ -53,10 +53,17 @@ const ApplicationDetails = () => {
     };
 
     const handleClose = () => setShow(false);
-
+    const validateForm=()=>{
+        if(appformData.firstName===""||appformData.lastName===""||appformData.email===""||
+            appformData.skills.length===0||appformData.aboutSelf===""){
+                NotifyData("Please fill all the fields");
+                return false;
+            }
+    }
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(addApplication(appformData));
+        validateForm()
         handleClose();
         NotifyData("Your Applications is Submited")
         console.log('Form submitted:', appformData);

@@ -28,7 +28,9 @@ const ApplicationForm = ({appformData,setappFormData}) => {
           [name]: value,
         }));
       };
-     
+    
+
+ 
       const handleEditorChange = (content) => {
         const strippedContent = content.replace(/<[^>]+>/g, '');
         setappFormData({

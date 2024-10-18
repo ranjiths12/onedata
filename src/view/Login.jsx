@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Container, Row, Col } from 'react-bootstrap'; 
+import { Container, Row, Col } from 'react-bootstrap';
 import { TextInputForm } from '../components/Forms';
 import { Buttons } from '../components/Buttons';
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
 import users from '../data/LoginData';
 import NotifyData from '../components/NotifyData';
-
+import { Helmet } from 'react-helmet';
 const Login = () => {
   const navigate = useNavigate();
   const [mobileNumber, setMobileNumber] = useState('');
@@ -27,17 +27,20 @@ const Login = () => {
     if (!validateInputs()) return;
     const user = users.find(u => u.mobile_number === mobileNumber);
     if (user && user.password === password) {
-      NotifyData('Login Successfull',"success")
-      navigate('/dashboard'); 
+      NotifyData('Login Successfull', "success")
+      navigate('/dashboard');
     } else {
-    
-      NotifyData("Invalid mobile number or password" ,"error")
+
+      NotifyData("Invalid mobile number or password", "error")
     }
-    
+
   };
 
   return (
     <div className='pad_120'>
+      <Helmet>
+        <title>Login - Job Portal</title> {/* Set the dynamic title here */}
+      </Helmet>
       <Container>
         <Row className='justify-content-center'>
           <Col lg='8' md='8' xs='12'>
@@ -58,7 +61,7 @@ const Login = () => {
                       <TextInputForm
                         textlabel="Mobile Number"
                         value={mobileNumber}
-                        onChange={(e) => setMobileNumber(e.target.value)} 
+                        onChange={(e) => setMobileNumber(e.target.value)}
                       />
                     </Col>
                     <Col lg='12' md='12' xs="12" className='py-3'>
@@ -67,7 +70,7 @@ const Login = () => {
                         classname='form-control-padright'
                         type={showPassword ? "text" : "password"}
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)} 
+                        onChange={(e) => setPassword(e.target.value)}
                         suffix_icon={
                           <>
                             {showPassword ? (
@@ -80,7 +83,7 @@ const Login = () => {
                       />
                     </Col>
                     <Col lg='12' md='12' xs="12" className='py-3'>
-                      <Buttons label="Login" classname="login-btn" OnClick={handleLogin}/>
+                      <Buttons label="Login" classname="login-btn" OnClick={handleLogin} />
                     </Col>
                   </Row>
                 </Col>
