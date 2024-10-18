@@ -6,7 +6,7 @@ import { Buttons } from '../components/Buttons';
 import { useNavigate } from 'react-router-dom';
 import PageTitle from '../components/PageTitle';
 import skills from '../data/Skills';
-
+import { FaAngleRight,FaAngleLeft} from "react-icons/fa6";
 const Jobs = () => {
   const jobList = useSelector((state) => state.job.jobList);
   const navigate = useNavigate();
@@ -84,6 +84,7 @@ const Jobs = () => {
             <Col lg="6">
               <TextInputForm
                 textlabel="Search Keywords"
+                PlaceHolder="Search Keywords"
                 value={searchQuery}
                 onChange={handleSearchChange} // Set onChange for search input
               />
@@ -116,17 +117,17 @@ const Jobs = () => {
             ))}
 
             {/* Pagination Controls */}
-            <Col xs={12} className='py-4 d-flex justify-content-between'>
+            <Col xs={12} className='py-4 d-flex align-items-center justify-content-end'>
               <Buttons 
-                label="Previous" 
-                classname="crud-btn" 
+                label={<><FaAngleLeft/></>} 
+                classname="icon-btn mx-1" 
                 OnClick={handlePreviousPage} 
-                disabled={currentPage === 1}
+                disabled={currentPage === 1} 
               />
               <span>{`Page ${currentPage} of ${totalPages}`}</span>
               <Buttons 
-                label="Next" 
-                classname="crud-btn" 
+                label={<><FaAngleRight/></>} 
+                classname="icon-btn mx-1" 
                 OnClick={handleNextPage} 
                 disabled={currentPage === totalPages}
               />

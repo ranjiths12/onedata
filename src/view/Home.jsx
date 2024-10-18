@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import NotifyData from '../components/NotifyData';
 import { addJob, updateJob, deleteJob, setInitialJobs } from '../slices/jobSlices';
 import jobs from '../data/Jobs';
+import { FaAngleRight,FaAngleLeft} from "react-icons/fa6";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -184,10 +185,10 @@ const Home = () => {
       <div className='main-content'>
         <Container fluid>
           <Row>
-            <Col lg="6" md="6" xs={12} className='align-self-center py-3'>
+            <Col lg="6" md="6" xs="6" className='align-self-center py-3'>
               <PageTitle PageTitle="Job Listing" showButton={false} />
             </Col>
-            <Col lg="6" md="6" xs={12} className='text-end py-3'>
+            <Col lg="6" md="6" xs="6" className='text-end py-3'>
               <Buttons OnClick={handleOpen} label="Create New" classname="crud-btn" />
               <CustomModal
                 show={show}
@@ -204,7 +205,7 @@ const Home = () => {
                 handleClose={handleClose}
               />
             </Col>
-            <Col lg="3" className='py-3'>
+            <Col lg="3" xs='12' className='py-3'>
               <TextInputForm
                 classname="form-control-padleft"
                 prefix_icon={<HiMagnifyingGlass />}
@@ -217,19 +218,19 @@ const Home = () => {
               <TableUI headers={jobHead} body={jobData} showActionColumn={true} />
             </Col>
             {/* Pagination Controls */}
-            <Col xs={12} className='py-4 d-flex justify-content-between'>
+            <Col xs={12} className='py-4 d-flex align-items-center justify-content-end'>
               <Buttons 
-                label="Previous" 
-                classname="crud-btn" 
+                label={<><FaAngleLeft/></>} 
+                classname="icon-btn mx-1" 
                 OnClick={handlePreviousPage} 
-                disabled={currentPage === 1} // Disable button if on first page
+                disabled={currentPage === 1} 
               />
               <span>{`Page ${currentPage} of ${totalPages}`}</span>
               <Buttons 
-                label="Next" 
-                classname="crud-btn" 
+                label={<><FaAngleRight/></>} 
+                classname="icon-btn mx-1" 
                 OnClick={handleNextPage} 
-                disabled={currentPage === totalPages} // Disable button if on last page
+                disabled={currentPage === totalPages}
               />
             </Col>
           </Row>

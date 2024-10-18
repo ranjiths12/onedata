@@ -15,6 +15,11 @@ const MenuItems = [
     icon: <HiOutlineNewspaper />,
     text: "Application Listing",
   },
+  {
+    path: "/",
+    icon: <HiOutlineNewspaper />,
+    text: "LogOut",
+  },
 ];
 
 export default MenuItems;

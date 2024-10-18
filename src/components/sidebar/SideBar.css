@@ -153,3 +153,19 @@
     border-radius: 50px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+
+/* mobile css start */
+@media (min-width:1px) and (max-width:767.98px){
+    /* toggle start */
+    #main {padding: 10px 12px !important;   margin-left: 0px;}
+    .toggle-sidebar #main {
+        margin-left: 0px;
+    }
+     /* side bar start */
+     .side-bar {left: -300px;}
+     .toggle-sidebar .side-bar {
+        left: 0px;
+    }
+    
+}

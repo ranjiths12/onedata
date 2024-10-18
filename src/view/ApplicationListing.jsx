@@ -40,10 +40,10 @@ const ApplicationListing = () => {
             <div className='main-content'>
                 <Container>
                     <Row>
-                        <Col lg="6" md="6" xs="12" className='text-end py-3 align-self-center'>
+                        <Col lg="6" md="6" xs="6" className='text-end py-3 align-self-center'>
                            <PageTitle PageTitle="Application" showButton={false}/>
                         </Col>
-                        <Col lg="6" md="6" xs="12" className='text-end py-3'>
+                        <Col lg="6" md="6" xs="6" className='text-end py-3'>
                             <Buttons label="Print" classname="crud-btn" OnClick={handlePrintClick} />
                         </Col>
                         <Col xs={12} className='py-3'>
