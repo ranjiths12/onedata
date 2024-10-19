@@ -19,8 +19,9 @@ const routes = [
     // Page Routes litsing
   { path: "/dashboard", element: <Home /> },
   { path: "/joblisting", element: <Jobs /> },
-  { path: "/applicationdetails/:id", element: <ApplicationDetails /> },
   { path: "/applicationlisting", element: <ApplicationListing /> },
+  { path: "/applicationdetails/:id", element: <ApplicationDetails /> },
+
 
   // pdf view
   { path: "/billpreview", element: <Billpreview /> },

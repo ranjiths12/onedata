@@ -8,6 +8,7 @@ import PageTitle from '../components/PageTitle';
 import skills from '../data/Skills';
 import { FaAngleRight,FaAngleLeft} from "react-icons/fa6";
 import { Helmet } from 'react-helmet';
+import JobportalHeader from '../components/JobportalHeader';
 const Jobs = () => {
   const jobList = useSelector((state) => state.job.jobList);
   const navigate = useNavigate();
@@ -63,10 +64,11 @@ const Jobs = () => {
   };
 
   return (
-    <div id="main">
+    <div>
         <Helmet>
         <title>Jobs</title> 
       </Helmet>
+      <JobportalHeader/>
       <div className='main-content'>
         <Container fluid>
           <Row>

@@ -6,13 +6,19 @@ import Header from '../components/sidebar/Header';
 
 const Layout = ({ children }) => {
   const location = useLocation();
-  const isLoginPage = location.pathname === '/';
 
+  const routesWithoutSidebar = [
+    '/',
+    '/joblisting',
+    '/applicationlisting',
+    '/applicationdetails/:id'
+  ];
+  const isRouteWithoutSidebar = routesWithoutSidebar.includes(location.pathname);
   return (
     <>
       <Header />
-      {!isLoginPage && <SideBar />}
-      <div className={isLoginPage ? 'login-content' : 'content'}>
+      {!isRouteWithoutSidebar && <SideBar />}
+      <div className={isRouteWithoutSidebar ? 'nosidebarcontent' : 'content'}>
         {children}
       </div>
     </>

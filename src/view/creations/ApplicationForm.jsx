@@ -40,7 +40,7 @@ const ApplicationForm = ({appformData,setappFormData}) => {
     };
   return (
     <div>
-        <Container>
+        <Container fluid>
             <Row>
             <Col lg='4' className='py-3'>
               <TextInputForm

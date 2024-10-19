@@ -7,6 +7,7 @@ import BillPreview from '../pdf/BillPreview'; // Import the BillPreview componen
 import TableUI from '../components/TableUI';
 import PageTitle from '../components/PageTitle';
 import { Helmet } from 'react-helmet';
+import JobportalHeader from '../components/JobportalHeader';
 
 const ApplicationListing = () => {
     const applicationList = useSelector((state) => state.application.applicationList);
@@ -37,10 +38,11 @@ const ApplicationListing = () => {
     };
 
     return (
-        <div id="main">
+        <div>
             <Helmet>
             <title>Apllication Listing</title> 
             </Helmet>
+            <JobportalHeader/>
             <div className='main-content'>
                 <Container>
                     <Row>

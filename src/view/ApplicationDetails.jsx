@@ -10,6 +10,7 @@ import { addApplication } from '../slices/ApplicationSlices';
 import skills from '../data/Skills'; 
 import NotifyData from '../components/NotifyData';
 import { Helmet } from 'react-helmet';
+import JobportalHeader from '../components/JobportalHeader';
 
 const ApplicationDetails = () => {
     const navigate = useNavigate();
@@ -76,12 +77,13 @@ const ApplicationDetails = () => {
     };
 
     return (
-        <div id='main'>
+        <div>
             <Helmet>
                 <title>Application Details</title> 
             </Helmet>
+            <JobportalHeader/>
             <div className='main-content'>
-                <Container>
+                <Container fluid>
                     <Row>
                         <Col lg='12'>
                             <Buttons classname="icon-only" label={<><IoMdArrowRoundBack /></>} OnClick={handleBack} />
