@@ -14,6 +14,7 @@ import NotifyData from '../components/NotifyData';
 import { addJob, updateJob, deleteJob, setInitialJobs } from '../slices/jobSlices';
 import jobs from '../data/Jobs';
 import { FaAngleRight,FaAngleLeft} from "react-icons/fa6";
+import { Helmet } from 'react-helmet';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -182,6 +183,9 @@ const Home = () => {
 
   return (
     <div id="main">
+        <Helmet>
+        <title>dashboard</title> 
+      </Helmet>
       <div className='main-content'>
         <Container fluid>
           <Row>

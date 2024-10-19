@@ -39,7 +39,7 @@ const Login = () => {
   return (
     <div className='pad_120'>
       <Helmet>
-        <title>Login - Job Portal</title> {/* Set the dynamic title here */}
+        <title>Login - Job Portal</title> 
       </Helmet>
       <Container>
         <Row className='justify-content-center'>

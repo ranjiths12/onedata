@@ -9,6 +9,7 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import { addApplication } from '../slices/ApplicationSlices';
 import skills from '../data/Skills'; 
 import NotifyData from '../components/NotifyData';
+import { Helmet } from 'react-helmet';
 
 const ApplicationDetails = () => {
     const navigate = useNavigate();
@@ -54,16 +55,17 @@ const ApplicationDetails = () => {
 
     const handleClose = () => setShow(false);
     const validateForm=()=>{
-        if(appformData.firstName===""||appformData.lastName===""||appformData.email===""||
-            appformData.skills.length===0||appformData.aboutSelf===""){
-                NotifyData("Please fill all the fields");
-                return false;
-            }
+        if (!appformData.firstName) return NotifyData('Required First Name', "error");
+    if (!appformData.lastName) return NotifyData('Required Last Name', "error");
+    if (!appformData.email) return NotifyData('Required Email Name', "error");
+    if (appformData.skills.length === 0) return NotifyData('Required Skills', "error");
+    if (!appformData.aboutSelf) return NotifyData('Required About Me', "error");
+    return true;
     }
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (!validateForm()) return;
         dispatch(addApplication(appformData));
-        validateForm()
         handleClose();
         NotifyData("Your Applications is Submited")
         console.log('Form submitted:', appformData);
@@ -75,6 +77,9 @@ const ApplicationDetails = () => {
 
     return (
         <div id='main'>
+            <Helmet>
+                <title>Application Details</title> 
+            </Helmet>
             <div className='main-content'>
                 <Container>
                     <Row>

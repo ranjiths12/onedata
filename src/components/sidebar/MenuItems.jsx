@@ -1,4 +1,6 @@
 import { HiOutlineNewspaper } from "react-icons/hi";
+import { MdWorkOutline,MdLogout  } from "react-icons/md";
+import { RiListIndefinite } from "react-icons/ri";
 const MenuItems = [
   {
     path: "/dashboard",
@@ -7,17 +9,17 @@ const MenuItems = [
   },
   {
     path: "/joblisting",
-    icon: <HiOutlineNewspaper />,
+    icon: <MdWorkOutline />,
     text: "Job Listing",
   },
   {
     path: "/applicationlisting",
-    icon: <HiOutlineNewspaper />,
+    icon: <RiListIndefinite />,
     text: "Application Listing",
   },
   {
     path: "/",
-    icon: <HiOutlineNewspaper />,
+    icon: <MdLogout />,
     text: "LogOut",
   },
 ];

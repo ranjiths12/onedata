@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import PageTitle from '../components/PageTitle';
 import skills from '../data/Skills';
 import { FaAngleRight,FaAngleLeft} from "react-icons/fa6";
+import { Helmet } from 'react-helmet';
 const Jobs = () => {
   const jobList = useSelector((state) => state.job.jobList);
   const navigate = useNavigate();
@@ -63,6 +64,9 @@ const Jobs = () => {
 
   return (
     <div id="main">
+        <Helmet>
+        <title>Jobs</title> 
+      </Helmet>
       <div className='main-content'>
         <Container fluid>
           <Row>
