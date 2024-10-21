@@ -29,8 +29,6 @@ const Login = () => {
     if (user && user.password === password) {
       NotifyData('Login Successfull', "success")
       navigate('/dashboard');
-    } else {
-      NotifyData("Invalid mobile number or password", "error")
     }
   };
 
