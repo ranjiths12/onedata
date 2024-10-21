@@ -30,10 +30,8 @@ const Login = () => {
       NotifyData('Login Successfull', "success")
       navigate('/dashboard');
     } else {
-
       NotifyData("Invalid mobile number or password", "error")
     }
-
   };
 
   return (
@@ -47,7 +45,9 @@ const Login = () => {
             <div className='login-box'>
               <Row className='justify-content-center'>
                 <Col lg='6' md='12' xs="12">
-                  <img src={require('../assets/images/login_two.png')} className='img-fluid' alt='Zentexus Technologies' />
+                  <div className='text-center'>
+                    <img src={require('../assets/images/login_two.png')} className='img-fluid' alt='one data' />
+                  </div>
                 </Col>
                 <Col lg='6' md='12' xs="12" className='align-self-center'>
                   <Row>

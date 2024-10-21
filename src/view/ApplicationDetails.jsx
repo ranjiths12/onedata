@@ -46,12 +46,12 @@ const ApplicationDetails = () => {
 
     // Enhanced skill retrieval
     const getSkillNames = (skillIds) => {
-        console.log("Skill IDs:", skillIds); // Debugging line
+        console.log("Skill IDs:", skillIds);
         return skillIds.map(id => {
             const skill = skills.find(skill => skill.id === id);
-            console.log("Found Skill:", skill); // Debugging line
-            return skill ? skill.name : ''; // Fallback to empty if not found
-        }).filter(Boolean).join(', '); // Filter out any empty strings
+            console.log("Found Skill:", skill); 
+            return skill ? skill.name : ''; 
+        }).filter(Boolean).join(', '); 
     };
 
     const handleClose = () => setShow(false);

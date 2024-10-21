@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Container, Row, Col } from 'react-bootstrap';
 import skills from '../data/Skills'; 
 import { Buttons } from '../components/Buttons';
-import BillPreview from '../pdf/BillPreview'; // Import the BillPreview component
+import BillPreview from '../pdf/BillPreview';
 import TableUI from '../components/TableUI';
 import PageTitle from '../components/PageTitle';
 import { Helmet } from 'react-helmet';
@@ -11,7 +11,7 @@ import JobportalHeader from '../components/JobportalHeader';
 
 const ApplicationListing = () => {
     const applicationList = useSelector((state) => state.application.applicationList);
-    const [showPDF, setShowPDF] = useState(false); // State to control PDF viewer visibility
+    const [showPDF, setShowPDF] = useState(false);
 
     const getSkillNames = (skillIds) => {
         return skillIds.map(skillId => {
